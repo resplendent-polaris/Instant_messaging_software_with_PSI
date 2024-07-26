@@ -1,0 +1,9 @@
+{
+	"name": "boxim",
+	"uni-app": {
+		"scripts": {}
+	},
+	"dependencies": {
+		"js-audio-recorder": "^1.0.7"
+	}
+}
