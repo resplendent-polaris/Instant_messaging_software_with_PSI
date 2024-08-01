@@ -919,7 +919,7 @@
 					outline-color: rgba(83, 160, 231, 0.61);
 
 					text-align: left;
-					line-height: 30 px;
+					line-height: 30px;
 
 					&:before {
 						content: attr(placeholder);

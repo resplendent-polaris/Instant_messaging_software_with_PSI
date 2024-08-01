@@ -1,30 +1,33 @@
 <template>
 	<el-container class="register-view">
-		<div>
-			<el-form :model="registerForm" status-icon :rules="rules" ref="registerForm" label-width="80px" class="web-ruleForm">
-				<div class="register-brand">欢迎成为盒子IM的用户</div>
-				<el-form-item label="用户名" prop="userName">
+		<div class="register-content">
+			<el-form :model="registerForm" status-icon :rules="rules" ref="registerForm" class="web-ruleForm">
+        <div class="tips">
+          <span>register</span>
+        </div>
+        <div class="register-brand">Welcome!</div>
+				<el-form-item class="username input-item" prop="userName">
 					<el-input type="userName" v-model="registerForm.userName" autocomplete="off" placeholder="用户名(登录使用)"></el-input>
 				</el-form-item>
-				<el-form-item label="昵称" prop="nickName">
+				<el-form-item class="nickname input-item" prop="nickName">
 					<el-input type="nickName" v-model="registerForm.nickName" autocomplete="off" placeholder="昵称"></el-input>
 				</el-form-item>
-				<el-form-item label="密码" prop="password">
+				<el-form-item class="password input-item" prop="password">
 					<el-input type="password" v-model="registerForm.password" autocomplete="off" placeholder="密码"></el-input>
 				</el-form-item>
-				<el-form-item label="确认密码" prop="confirmPassword">
+				<el-form-item class="confirmpassword input-item" prop="confirmPassword">
 					<el-input type="password" v-model="registerForm.confirmPassword" autocomplete="off" placeholder="确认密码"></el-input>
 				</el-form-item>
-				<el-form-item>
-					<el-button type="primary" @click="submitForm('registerForm')">注册</el-button>
-					<el-button @click="resetForm('registerForm')">清空</el-button>
-				</el-form-item>
+				<div>
+					<el-button class="btn" @click="submitForm('registerForm')">Register</el-button>
+					<el-button class="btn" @click="resetForm('registerForm')">Reset</el-button>
+				</div>
 				<div class="to-login">
-					<router-link to="/login">已有账号,前往登录</router-link>
+					<router-link to="/login">Click To Login</router-link>
 				</div>
 			</el-form>
 		</div>
-		<icp></icp>
+		<!--<icp></icp>-->
 	</el-container>
 </template>
 
@@ -116,47 +119,115 @@
 </script>
 
 <style scoped lang="scss">
+@import '../assets/iconfont/login_register_font.css';
+* {
+  padding: 0;
+  margin: 0;
+}
+a{
+  text-decoration: none;
+  color: #a9cff3;
+}
 	.register-view {
-		position: fixed;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		width: 100%;
-		height: 100%;
-		background: rgb(232, 242, 255);
-		
-		.web-ruleForm {
-			width: 500px;
-			height: 450px;
-			padding: 20px;
-			background: white;
-			opacity: 0.9;
-			box-shadow: 0px 0px  1px #ccc;
-			border-radius: 3px;
-			overflow: hidden;
-			border-radius: 3%;
-			
-			.register-brand {
-				line-height: 50px;
-				margin: 20px 0 30px 0;
-				font-size: 22px;
-				font-weight: 600;
-				letter-spacing: 2px;
-				text-align: center;
-				text-transform: uppercase;
-			}
-			
-			.to-login {
-				display: flex;
-				flex-direction: row-reverse;
-				line-height: 40px;
-				text-align: left;
-				padding-left: 20px;
-			}
-		}
+    .register-content {
+      width: 80vw;
+      height: 80vh;
+      background: url(../assets/image/bg.jpg);
+      background-attachment: fixed;
+      background-size: cover;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 30px;
+      font-family: NeueMachina-Regular;
+      overflow: hidden;
+      .web-ruleForm {
+        height: 100%;
+        width: 50%;
+        background-color: rgb(45, 50, 80);
+        border-radius: 30px 0 0 30px;
+        color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        position: relative;
+        .tips{
+          width: 70%;
+          height: 7%;
+          box-sizing: border-box;
+          font-size: 25px;
+          margin: 3vh;
+          span{
+            margin: 0 10px 0 0;
+            cursor: pointer;
+            padding-bottom: 5px;
+            transition: 0.1s;
+            border-bottom: 4px solid rgb(249, 177, 122);
+            color: #fff;
+          }
+        }
+        .input-item{
+          width: 75%;
+          height: 70px;
+          margin: 10px 0 10px 25px;
+          //transition: 0.5s;
+        }
+        .username::before{
+          content: "Username";
+        }
+        .nickname::before{
+          content: "Nickname";
+        }
+        .password::before{
+          content: "Password";
+        }
+        .confirmpassword::before{
+          content: "ConfirmPassword";
+        }
+        .register-brand {
+          line-height: 25px;
+          //margin: 5px 0 5px 0;
+          font-size: 32px;
+          font-weight: 600;
+          letter-spacing: 2px;
+          text-align: center;
+          text-transform: uppercase;
+          font-family: NeueMachina-Regular;
+        }
+        .btn{
+          width: 100px;
+          height: 50px;
+          top: 20%;
+          cursor: pointer;
+          border: 0;
+          background-color: rgb(249, 177, 122);
+          color: rgb(45, 50, 80);
+          margin: 10px 20px;
+          border-radius: 5px;
+          font-size: 20px;
+          box-shadow: 0px 0px 10px rgb(249, 177, 122);
+          transition: 0.3s;
+
+          display: inline-flex;
+          justify-content: center; //水平
+          align-items: center; //垂直
+          font-family: NeueMachina-Regular;
+        }
+        .btn:hover{
+          box-shadow: 0px 0px 15px rgb(249, 177, 122);
+        }
+        .to-login {
+          font-size: 24px;
+          display: flex;
+          flex-direction: row-reverse;
+          line-height: 30px;
+          text-align: left;
+          padding-left: 20px;
+          margin-top:5px ;
+        }
+      }
+    }
 	}
-
-	
-
-	
 </style>

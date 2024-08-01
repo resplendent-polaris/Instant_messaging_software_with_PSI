@@ -1,31 +1,31 @@
 <template>
 	<div class="login-view">
 		<div class="login-content">
-			<el-form class="login-form" :model="loginForm" status-icon :rules="rules" ref="loginForm" label-width="60px"
+			<el-form class="login-form" :model="loginForm" status-icon :rules="rules" ref="loginForm"
 				@keyup.enter.native="submitForm('loginForm')">
-				<div class="login-brand">登陆盒子IM</div>
+        <div class="tips">
+          <span>login</span>
+        </div>
+        <h1 >Hello!</h1>
 				<el-form-item label="终端" prop="userName" v-show="false">
 					<el-input type="terminal" v-model="loginForm.terminal" autocomplete="off"></el-input>
 				</el-form-item>
-				<el-form-item label="用户名" prop="userName">
-					<el-input type="userName" v-model="loginForm.userName" autocomplete="off"
-						placeholder="用户名"></el-input>
-
+				<el-form-item class="username input-item" prop="userName">
+					<el-input type="userName" v-model="loginForm.userName" autocomplete="off"></el-input>
 				</el-form-item>
-				<el-form-item label="密码" prop="password">
-					<el-input type="password" v-model="loginForm.password" autocomplete="off"
-						placeholder="密码"></el-input>
+				<el-form-item class="password input-item" prop="password">
+					<el-input type="password" v-model="loginForm.password" autocomplete="off"></el-input>
 				</el-form-item>
-				<el-form-item>
-					<el-button type="primary" @click="submitForm('loginForm')">登陆</el-button>
-					<el-button @click="resetForm('loginForm')">清空</el-button>
-				</el-form-item>
+        <div>
+          <el-button class="btn" @click="submitForm('loginForm')">Login</el-button>
+          <el-button class="btn" @click="resetForm('loginForm')">Reset</el-button>
+        </div>
 				<div class="register">
-					<router-link to="/register">没有账号,前往注册</router-link>
+					<router-link to="/register">Click To Register</router-link>
 				</div>
 			</el-form>
 		</div>
-		<icp></icp>
+		<!--<icp></icp>-->
 	</div>
 
 </template>
@@ -130,50 +130,109 @@
 </script>
 
 <style scoped lang="scss">
+@import '../assets/iconfont/login_register_font.css';
+* {
+  padding: 0;
+  margin: 0;
+}
+a{
+  text-decoration: none;
+  color: #a9cff3;
+}
+
 	.login-view {
-		width: 100%;
-		height: 100%;
-		background: #E8F2FF;
-		background-size: cover;
-		box-sizing: border-box;
-
-
 		.login-content {
-			position: relative;
-			display: flex;
-			justify-content: space-around;
-			align-items: center;
-			padding: 10%;
-
+      width: 80vw;
+      height: 80vh;
+      background: url(../assets/image/bg.jpg);
+      background-attachment: fixed;
+      background-size: cover;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 30px;
+      font-family: NeueMachina-Regular;
+      overflow: hidden;
 
 
 			.login-form {
-				height: 340px;
-				width: 400px;
-				padding: 30px;
-				background: white;
-				opacity: 0.9;
-				box-shadow: 0px 0px 1px #ccc;
-				border-radius: 3%;
-				overflow: hidden;
-				border: 1px solid #ccc;
+				height: 100%;
+				width: 50%;
+        background-color: rgb(45, 50, 80);
+        border-radius: 30px 0 0 30px;
+        color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        position: relative;
+        .tips{
+          width: 70%;
+          height: 10%;
+          box-sizing: border-box;
+          font-size: 25px;
+          margin: 4vh;
+          span{
+            margin: 0 10px 0 0;
+            cursor: pointer;
+            padding-bottom: 5px;
+            transition: 0.1s;
+            border-bottom: 4px solid rgb(249, 177, 122);
+            color: #fff;
+          }
+        }
+        h1 {
+          width: 70%;
+          top: 20%;
+          margin-bottom: 10px;
+          font-size: 32px;
+        }
+        .username::before{
+          content: "Username";
+        }
+        .input-item{
+          width: 75%;
+          height: 70px;
+          margin: 10px 0 10px 25px;
+          //transition: 0.5s;
+        }
+        /*.input-item>>>.el-input__inner{
+          background-color: rgb(66, 71, 105);
+        }*/
 
-				.login-brand {
-					line-height: 50px;
-					margin: 30px 0 40px 0;
-					font-size: 22px;
-					font-weight: 600;
-					letter-spacing: 2px;
-					text-transform: uppercase;
-					text-align: center;
-				}
+        .password::before{
+          content: "Password";
+        }
+        .btn{
+          width: 100px;
+          height: 50px;
+          top: 20%;
+          cursor: pointer;
+          border: 0;
+          background-color: rgb(249, 177, 122);
+          color: rgb(45, 50, 80);
+          margin: 10px 20px;
+          border-radius: 5px;
+          font-size: 20px;
+          box-shadow: 0px 0px 10px rgb(249, 177, 122);
+          transition: 0.3s;
+          margin-top: 3vw;
+          font-family: NeueMachina-Regular;
+        }
+        .btn:hover{
+          box-shadow: 0px 0px 15px rgb(249, 177, 122);
+        }
+
 
 				.register {
+          font-size: 24px;
 					display: flex;
 					flex-direction: row-reverse;
 					line-height: 40px;
 					text-align: left;
 					padding-left: 20px;
+          margin-top:25px ;
 				}
 			}
 		}
