@@ -19,11 +19,11 @@
 					<el-input type="password" v-model="registerForm.confirmPassword" autocomplete="off" placeholder="确认密码"></el-input>
 				</el-form-item>
 				<div>
-					<el-button class="btn" @click="submitForm('registerForm')">Register</el-button>
-					<el-button class="btn" @click="resetForm('registerForm')">Reset</el-button>
+					<el-button class="btn" @click="submitForm('registerForm')">注册</el-button>
+					<el-button class="btn" @click="resetForm('registerForm')">重置</el-button>
 				</div>
 				<div class="to-login">
-					<router-link to="/login">Click To Login</router-link>
+					<router-link to="/login">点击去登录</router-link>
 				</div>
 			</el-form>
 		</div>

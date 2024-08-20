@@ -2,6 +2,10 @@
   font-family: "iconfont"; /* Project id 3791506 */
   src: url('iconfont.ttf?t=1718373714629') format('truetype');
 }
+@font-face {
+  font-family: "iconfont"; /* Project id 4642746 */
+  src: url('iconfont_add.ttf?t=1722742734944') format('truetype');
+}
 
 .iconfont {
   font-family: "iconfont" !important;
@@ -90,4 +94,6 @@
 .icon-phone-accept:before {
   content: "\e8be";
 }
-
+.icon-jiaoji:before {
+  content: "\e806";
+}
