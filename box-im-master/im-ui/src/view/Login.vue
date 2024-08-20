@@ -6,22 +6,22 @@
         <div class="tips">
           <span>login</span>
         </div>
-        <h1>Hello!</h1>
+        <h1 >Hello!</h1>
 				<el-form-item label="终端" prop="userName" v-show="false">
 					<el-input type="terminal" v-model="loginForm.terminal" autocomplete="off"></el-input>
 				</el-form-item>
-				<el-form-item class="username input-item" prop="userName" placeholder="用户名">
+				<el-form-item class="username input-item" prop="userName">
 					<el-input type="userName" v-model="loginForm.userName" autocomplete="off"></el-input>
 				</el-form-item>
-				<el-form-item class="password input-item" prop="password" placeholder="密码">
+				<el-form-item class="password input-item" prop="password">
 					<el-input type="password" v-model="loginForm.password" autocomplete="off"></el-input>
 				</el-form-item>
         <div>
-          <el-button class="btn" @click="submitForm('loginForm')">登录</el-button>
-          <el-button class="btn" @click="resetForm('loginForm')">重置</el-button>
+          <el-button class="btn" @click="submitForm('loginForm')">Login</el-button>
+          <el-button class="btn" @click="resetForm('loginForm')">Reset</el-button>
         </div>
 				<div class="register">
-					<router-link to="/register">点击去注册</router-link>
+					<router-link to="/register">Click To Register</router-link>
 				</div>
 			</el-form>
 		</div>
@@ -187,7 +187,6 @@ a{
           top: 20%;
           margin-bottom: 10px;
           font-size: 32px;
-          text-align: center;
         }
         .username::before{
           content: "Username";

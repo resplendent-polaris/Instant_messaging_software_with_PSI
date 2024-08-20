@@ -56,7 +56,6 @@
 									@click="showPrivateVideo('video')">
 								</div>
 								<div title="聊天记录" class="el-icon-chat-dot-round" @click="showHistoryBox()"></div>
-                <div title="共同好友" class="iconfont icon-jiaoji" @click="showIntersectionBox()"></div>
 							</div>
 							<div class="send-content-area">
 								<div contenteditable="true" v-show="!sendImageUrl" ref="editBox" class="send-text-area"
@@ -94,8 +93,6 @@
 			<rtc-group-join ref="rtcJoin" :groupId="group.id"></rtc-group-join>
 			<chat-history :visible="showHistory" :chat="chat" :friend="friend" :group="group"
 				:groupMembers="groupMembers" @close="closeHistoryBox"></chat-history>
-      <friends-intersection :visible="showIntersection" :chat="chat" :friend="friend"
-                           @close="closeIntersectionBox"></friends-intersection>
 		</el-container>
 	</div>
 </template>
@@ -107,7 +104,6 @@
 	import Emotion from "../common/Emotion.vue";
 	import ChatRecord from "./ChatRecord.vue";
 	import ChatHistory from "./ChatHistory.vue";
-  import FriendsIntersection from "./FriendsIntersection.vue";
 	import ChatAtBox from "./ChatAtBox.vue"
 	import GroupMemberSelector from "../group/GroupMemberSelector.vue"
 	import RtcGroupJoin from "../rtc/RtcGroupJoin.vue"
@@ -122,7 +118,6 @@
 			Emotion,
 			ChatRecord,
 			ChatHistory,
-      FriendsIntersection,
 			ChatAtBox,
 			GroupMemberSelector,
 			RtcGroupJoin
@@ -144,7 +139,6 @@
 				showRecord: false, // 是否显示语音录制弹窗
 				showSide: false, // 是否显示群聊信息栏
 				showHistory: false, // 是否显示历史聊天记录
-        showIntersection: false,
 				lockMessage: false, // 是否锁定发送，
 				showMinIdx: 0, // 下标低于showMinIdx的消息不显示，否则页面会很卡
 				atSearchText: "",
@@ -522,12 +516,6 @@
 			closeHistoryBox() {
 				this.showHistory = false;
 			},
-      showIntersectionBox(){
-        this.showIntersection = true;
-      },
-      closeIntersectionBox(){
-        this.showIntersection = false;
-      },
 			onSendRecord(data) {
 				let msgInfo = {
 					content: JSON.stringify(data),
