@@ -19,9 +19,9 @@
       <div v-if="mutualFriends.length">
         <el-scrollbar class="showfriend">
           <ul>
-            <li v-for="friend in mutualFriends" :key="friend.username">
-              <headImage :url="friend.headImage" :name="friend.username" :size="50"  />
-              <span>{{ friend.username }}</span>
+            <li v-for="friend in mutualFriends" :key="friend.friendNickName">
+              <headImage :url="friend.friendHeadImage" :name="friend.friendNickName" :size="50"  />
+              <span>{{ friend.friendNickName}}</span>
             </li>
           </ul>
         </el-scrollbar>
@@ -82,12 +82,12 @@ export default {
 
       this.mutualFriends = [
         {
-          username: 'Alice',
-          headImage: this.mine.headImageThumb
+          friendNickName: 'Alice',
+          friendHeadImage: this.mine.headImageThumb
         },
         {
-          username: 'Bob',
-          headImage: this.chat.headImageThumb
+          friendNickName: 'Bob',
+          friendHeadImage: this.chat.headImageThumb
         },]
       console.log("id1:",this.userId1)
       console.log("id2:",this.userId2)

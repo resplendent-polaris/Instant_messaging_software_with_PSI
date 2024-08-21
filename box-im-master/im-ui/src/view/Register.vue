@@ -132,14 +132,12 @@ a{
     .register-content {
       width: 80vw;
       height: 80vh;
-      background: url(../assets/image/bg.jpg);
-      background-attachment: fixed;
-      background-size: cover;
+
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      border-radius: 30px;
+      //border-radius: 30px;
       font-family: NeueMachina-Regular;
       overflow: hidden;
       .web-ruleForm {

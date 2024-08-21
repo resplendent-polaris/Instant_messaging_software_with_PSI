@@ -1,4 +1,4 @@
-<template>
+ <template>
 	<div class="group-item" :class="active ? 'active' : ''">
 		<div class="group-avatar">
 			<head-image :size="45" :name="group.remark" :url="group.headImage"> </head-image>
