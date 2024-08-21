@@ -6,22 +6,22 @@
         <div class="tips">
           <span>login</span>
         </div>
-        <h1 >Hello!</h1>
+        <h1>Hello!</h1>
 				<el-form-item label="终端" prop="userName" v-show="false">
 					<el-input type="terminal" v-model="loginForm.terminal" autocomplete="off"></el-input>
 				</el-form-item>
-				<el-form-item class="username input-item" prop="userName">
+				<el-form-item class="username input-item" prop="userName" placeholder="用户名">
 					<el-input type="userName" v-model="loginForm.userName" autocomplete="off"></el-input>
 				</el-form-item>
-				<el-form-item class="password input-item" prop="password">
+				<el-form-item class="password input-item" prop="password" placeholder="密码">
 					<el-input type="password" v-model="loginForm.password" autocomplete="off"></el-input>
 				</el-form-item>
         <div>
-          <el-button class="btn" @click="submitForm('loginForm')">Login</el-button>
-          <el-button class="btn" @click="resetForm('loginForm')">Reset</el-button>
+          <el-button class="btn" @click="submitForm('loginForm')">登录</el-button>
+          <el-button class="btn" @click="resetForm('loginForm')">重置</el-button>
         </div>
 				<div class="register">
-					<router-link to="/register">Click To Register</router-link>
+					<router-link to="/register">点击去注册</router-link>
 				</div>
 			</el-form>
 		</div>
@@ -144,14 +144,12 @@ a{
 		.login-content {
       width: 80vw;
       height: 80vh;
-      background: url(../assets/image/bg.jpg);
-      background-attachment: fixed;
-      background-size: cover;
+      //background: url(../assets/image/bg.jpg);
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      border-radius: 30px;
+      //border-radius: 30px;
       font-family: NeueMachina-Regular;
       overflow: hidden;
 
@@ -160,7 +158,7 @@ a{
 				height: 100%;
 				width: 50%;
         background-color: rgb(45, 50, 80);
-        border-radius: 30px 0 0 30px;
+        border-radius: 0px 0 0 0px;
         color: rgb(255, 255, 255);
         display: flex;
         flex-direction: column;
@@ -187,6 +185,7 @@ a{
           top: 20%;
           margin-bottom: 10px;
           font-size: 32px;
+          text-align: center;
         }
         .username::before{
           content: "Username";

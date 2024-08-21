@@ -15,7 +15,9 @@
 @import './assets/style/global.css';
 
 #app {
-  background-color: rgb(22, 30, 49);
+  background: url(./assets/image/bg.jpg);
+  background-attachment: fixed;
+  background-size: cover;
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
