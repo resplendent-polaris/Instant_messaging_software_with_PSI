@@ -15,16 +15,29 @@
 @import './assets/style/global.css';
 
 #app {
-  background: url(./assets/image/bg.jpg);
+  position: relative; /* 为伪元素定位提供基础 */
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  width: 100%;
+}
+
+#app::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(./assets/image/bg.jpg) no-repeat center center;
   background-attachment: fixed;
   background-size: cover;
-	font-family: 'Avenir', Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	position: absolute;
-	height: 100%;
-	width: 100%;
+  filter: blur(3px); /* 模糊背景 */
+  z-index: -1; /* 让背景位于内容的下层 */
+  transform: scale(1.05); /* 可选：为了让边缘不会出现模糊裁剪 */
 }
+
 
 .el-message {
 	z-index: 99999999 !important;
@@ -58,8 +71,8 @@
 }
 
 .el-input__inner {
-	border-radius: 5px !important;
-	border: #587FF0 1px solid !important;
+	//border-radius: 5px !important;
+	//border: #587FF0 1px solid !important;
 }
 
 .el-textarea__inner{

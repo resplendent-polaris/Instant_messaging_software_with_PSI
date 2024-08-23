@@ -20,8 +20,10 @@
         <el-scrollbar class="showfriend">
           <ul>
             <li v-for="friend in mutualFriends" :key="friend.friendNickName">
-              <headImage :url="friend.friendHeadImage" :name="friend.friendNickName" :size="50"  />
-              <span>{{ friend.friendNickName}}</span>
+              <div v-show="friend.friendNickName.toLowerCase().startsWith(searchText.toLowerCase())" >
+                <headImage style="display: inline-block;vertical-align: middle;" :url="friend.friendHeadImage" :name="friend.friendNickName" :size="50"  />
+                <span style="vertical-align: middle;">{{ friend.friendNickName}}</span>
+              </div>
             </li>
           </ul>
         </el-scrollbar>

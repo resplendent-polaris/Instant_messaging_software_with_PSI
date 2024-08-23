@@ -10,18 +10,27 @@
 				<el-form-item label="终端" prop="userName" v-show="false">
 					<el-input type="terminal" v-model="loginForm.terminal" autocomplete="off"></el-input>
 				</el-form-item>
-				<el-form-item class="username input-item" prop="userName" placeholder="用户名">
+				<el-form-item class="username input-item" prop="userName" placeholder="用户名" >
 					<el-input type="userName" v-model="loginForm.userName" autocomplete="off"></el-input>
 				</el-form-item>
 				<el-form-item class="password input-item" prop="password" placeholder="密码">
-					<el-input type="password" v-model="loginForm.password" autocomplete="off"></el-input>
+					<el-input :type="passwordVisible ? 'text' : 'password'" v-model="loginForm.password" autocomplete="off">
+            <template #suffix>
+              <el-button
+                  icon="el-icon-view"
+                  @click="togglePasswordVisibility"
+                  circle
+                  :class="passwordVisible ? 'visible' : ''"
+              ></el-button>
+            </template>
+          </el-input>
 				</el-form-item>
         <div>
           <el-button class="btn" @click="submitForm('loginForm')">登录</el-button>
-          <el-button class="btn" @click="resetForm('loginForm')">重置</el-button>
+
         </div>
 				<div class="register">
-					<router-link to="/register">点击去注册</router-link>
+					<router-link to="/register" @click="resetForm('loginForm')">新用户点击去注册</router-link>
 				</div>
 			</el-form>
 		</div>
@@ -55,8 +64,9 @@
 				loginForm: {
 					terminal: this.$enums.TERMINAL_TYPE.WEB,
 					userName: '',
-					password: ''
+					password: '',
 				},
+        passwordVisible: false ,// 控制密码是否可见
 				rules: {
 					userName: [{
 						validator: checkUsername,
@@ -111,6 +121,9 @@
 				document.cookie = name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate
 					.toGMTString());
 			},
+      togglePasswordVisibility() {
+        this.passwordVisible = !this.passwordVisible; // 切换密码可见性
+      },
 			// 删除cookie
 			delCookie(name) {
 				var exp = new Date();
@@ -139,12 +152,24 @@ a{
   text-decoration: none;
   color: #a9cff3;
 }
-
-	.login-view {
+::v-deep .el-input__inner{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(66, 71, 105);
+  outline: none;
+  border: none;
+  padding: 11px 10px 9px 15px;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 20px;
+  &:focus{
+    border-left: 3px solid rgb(255, 187, 124);
+  }
+}
+.login-view {
 		.login-content {
-      width: 80vw;
+      width: 40vw;
       height: 80vh;
-      //background: url(../assets/image/bg.jpg);
       position: absolute;
       left: 50%;
       top: 50%;
@@ -153,12 +178,11 @@ a{
       font-family: NeueMachina-Regular;
       overflow: hidden;
 
-
 			.login-form {
 				height: 100%;
-				width: 50%;
-        background-color: rgb(45, 50, 80);
-        border-radius: 0px 0 0 0px;
+				width: 100%;
+        background-color: rgba(45, 50, 80 , 0.7);
+        border-radius: 30px;
         color: rgb(255, 255, 255);
         display: flex;
         flex-direction: column;
@@ -180,6 +204,15 @@ a{
             color: #fff;
           }
         }
+
+        .el-button.is-circle {
+          padding: 0;
+          border: none;
+          background: none;
+          color: #909399;
+          width: 40px;  /* 设置按钮的宽度 */
+          height: 30px; /* 设置按钮的高度，保持与宽度相同 */
+        }
         h1 {
           width: 70%;
           top: 20%;
@@ -194,17 +227,13 @@ a{
           width: 75%;
           height: 70px;
           margin: 10px 0 10px 25px;
-          //transition: 0.5s;
         }
-        /*.input-item>>>.el-input__inner{
-          background-color: rgb(66, 71, 105);
-        }*/
 
         .password::before{
           content: "Password";
         }
         .btn{
-          width: 100px;
+          width: 200px;
           height: 50px;
           top: 20%;
           cursor: pointer;
@@ -212,7 +241,7 @@ a{
           background-color: rgb(249, 177, 122);
           color: rgb(45, 50, 80);
           margin: 10px 20px;
-          border-radius: 5px;
+          border-radius: 50px;
           font-size: 20px;
           box-shadow: 0px 0px 10px rgb(249, 177, 122);
           transition: 0.3s;
@@ -230,7 +259,6 @@ a{
 					flex-direction: row-reverse;
 					line-height: 40px;
 					text-align: left;
-					padding-left: 20px;
           margin-top:25px ;
 				}
 			}
